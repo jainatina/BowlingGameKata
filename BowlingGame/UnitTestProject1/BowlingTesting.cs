@@ -56,5 +56,45 @@ namespace UnitTestProject1
             Assert.AreEqual(16, score.GetScore());
 
         }
+
+        [TestMethod]
+        public void ResetScore()
+        {
+            var score = new BowlingScore();
+
+            score.Roll(3);
+            score.Roll(3);
+            score.GetScore();
+
+            Assert.AreEqual(6, score.GetScore());
+
+        }
+
+        [TestMethod]
+        public void Strike()
+        {
+            var score = new BowlingScore();
+
+            score.Roll(10);
+            score.Roll(3);
+            score.Roll(3);
+
+            Assert.AreEqual(22, score.GetScore());
+
+        }
+
+        [TestMethod]
+        public void LastStrike()
+        {
+            var score = new BowlingScore();
+
+            for (int i = 0; i < 12; i++)
+            {
+                score.Roll(10);
+            }
+
+            Assert.AreEqual(300, score.GetScore());
+
+        }
     }
 }
